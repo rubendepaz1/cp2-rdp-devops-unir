@@ -50,7 +50,7 @@ resource "azurerm_linux_virtual_machine" "myVM2" {
     location            = azurerm_resource_group.rg.location
     size                = var.vm_size
     admin_username      = "adminUsername"
-    network_interface_ids = [ azurerm_network_interface.myNic1.id ]
+    network_interface_ids = [ azurerm_network_interface.myNic2.id ]
     disable_password_authentication = true
 
     admin_ssh_key {
