@@ -40,6 +40,7 @@ resource "azurerm_linux_virtual_machine" "myVM1" {
     tags = {
         environment = "CP2"
     }
+}
     
 # Creamos la vm que será nuestro WORKER
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine
