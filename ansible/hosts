@@ -1,12 +1,12 @@
 [all:vars]
-ansible_user=<YOUR ANSIBLE USER>
+ansible_user=adminUsername
 
 [master]
-master
+20.23.225.197
 
 [workers]
-worker1
-worker2
+20.23.224.154
+
 
 [nfs]
-nfs
+20.23.225.197
