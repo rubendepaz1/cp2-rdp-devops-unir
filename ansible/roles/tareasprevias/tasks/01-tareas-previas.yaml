@@ -2,4 +2,4 @@
 
    - name: Actualizamos máquinas a último nivel
      become: yes
-     command: dnf update -y
+     command: dnf update -y --allowerasing
