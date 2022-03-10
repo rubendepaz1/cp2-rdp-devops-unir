@@ -1,0 +1,8 @@
+---
+
+   - name: Actualizamos máquinas a último nivel
+     dnf:
+      name: "*"
+      state: latest
+     become: true
+     when: ansible_os_family == "RedHat"

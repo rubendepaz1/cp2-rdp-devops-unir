@@ -1,7 +1,0 @@
----
-
-- name: Hola Mundo
-  hosts: all
-  gather_facts: false
-  roles:
-    - hola
