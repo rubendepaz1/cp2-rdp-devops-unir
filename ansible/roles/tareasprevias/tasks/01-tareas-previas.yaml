@@ -1,5 +1,21 @@
 ---
+- hosts: all
+  become: true
 
-   - name: Actualizamos máquinas a último nivel
-     become: yes
-     command: dnf update -y --allowerasing
+  tasks:
+
+  - name: Actualizar paquetes del sistema operativo
+    dnf:
+      name: "*"
+      state: latest
+
+  - name: Instalar paquete nfs-utils, nfs4-acl-tools, wget, net-tools, chrony
+    dnf:
+      name: "{{ item }}"
+      state: latest
+    loop:
+      - nfs-utils
+      - nfs4-acl-tools
+      - wget
+      - net-tools
+      - chrony
