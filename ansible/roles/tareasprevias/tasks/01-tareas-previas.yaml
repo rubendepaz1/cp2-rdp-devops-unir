@@ -1,6 +1,5 @@
 ---
 
    - name: Actualizamos máquinas a último nivel
-     dnf:
-      name: "*"
-      state: latest
+      become: yes
+      command: dnf update -y
