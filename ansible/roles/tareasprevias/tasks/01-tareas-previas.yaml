@@ -1,8 +1,4 @@
 ---
-
-- name: Tareas Previas
-  hosts: all
-  tasks:
   
    - name: limpiar cache dnf
      become: yes
