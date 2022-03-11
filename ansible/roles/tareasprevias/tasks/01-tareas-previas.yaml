@@ -1,5 +1,25 @@
 ---
 
+- name: Tareas Previas
+  hosts: all
+  tasks:
+  
+   - name: limpiar cache dnf
+     become: yes
+     command: dnf clean all
+
+   - name: limpiar cache dnf
+     become: yes
+     command: dnf check
+     
+   - name: limpiar cache dnf
+     become: yes
+     command: dnf check update
+     
+   - name: limpiar cache dnf
+     become: yes
+     command: dnf update
+
    - name: Actualizamos máquinas a último nivel
      dnf:
        name: "*"
