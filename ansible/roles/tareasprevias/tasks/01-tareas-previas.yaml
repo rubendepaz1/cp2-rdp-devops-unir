@@ -10,10 +10,6 @@
      
    - name: limpiar cache dnf
      become: yes
-     command: dnf check update
-     
-   - name: limpiar cache dnf
-     become: yes
      command: dnf update
 
    - name: Actualizamos máquinas a último nivel
