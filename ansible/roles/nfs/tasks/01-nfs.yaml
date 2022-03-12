@@ -17,9 +17,12 @@
       dest: /etc/exports
       mode: u=rw,g=r,o=r
 
+# En teoría con el become somos superusuarios, pero sin añadir el 
+# sudo no he logrado hacerlo funcionar. Puedes probarlo, sin  el sudo me dice
+# que extra arguments are not permitted with -a or -r
    - name: Aplicando config nfs 
      become: yes
-     command: exportfs -r | exportfs -s
+     command: sudo exportfs -r | sudo exportfs -s
 
    - name: Abriendo puertos para el nfs 
      become: yes
