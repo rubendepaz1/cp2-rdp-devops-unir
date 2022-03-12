@@ -1,48 +1,29 @@
 ---
   
-   - name: Estableciendo Zona Horaria
-     timezone: 
-       name: Europe/Madrid
-       
-   - name: Kubernetes repo
-     blockinfile:
-      create: yes
-      path: /etc/yum.repos.d/kubernetes.repo
-      block: |
-            [kubernetes]
-            baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-            enabled=1
-            gpgcheck=1
-            repo_gpgcheck=1
-            gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg            
-            exclude=kubelet kubeadm kubectl 
-            
-   # Las siguientes tareas las meto aunque no he visto que se hable de ello ni en el foro ni en las clases, pero a mí me ha dado problema el hacer el update
-   # de las máquinas a último nivel sin meter esto previamente.
-   - name: limpiar cache dnf
-     become: yes
-     command: dnf clean all
-
-   - name: check dnf
-     become: yes
-     command: dnf check
-
-   - name: Actualizamos máquinas a último nivel
-     dnf:
-       name: "*"
-       state: latest
-     become: yes
-     when: ansible_os_family == "RedHat"
-     
-
-   - name: Instalar Chrony
-     dnf:
-       name: chrony
-       state: latest
-     become: yes
-
-   - name: Activar Chrony
+   - name: Enable NFS
      service:
-       name: chronyd
+       name: nfs-server
        state: started
        enabled: yes
+
+   - name: Creando dir 
+     file:
+       path: /srv/nfs
+       state: directory
+
+   - name: Configurando share nfs
+     copy:
+      src: ficheros/exports
+      dest: /etc/exports
+      mode: u=rw,g=r,o=r
+
+   - name: Aplicando config nfs 
+     become: yes
+     command: exportfs -r | exportfs -s
+
+   - name: Abriendo puertos para el nfs 
+     become: yes
+     command: firewall-cmd --permanent --add-service=nfs | 
+              firewall-cmd --permanent --add-service=rpc-bind | 
+              firewall-cmd --permanent --add-service=mountd |
+              firewall-cmd --reload
