@@ -37,3 +37,11 @@
        state: latest
      become: yes
      when: ansible_os_family == "RedHat"
+     
+
+   - name: Instalar Chrony
+     dnf:
+       name: chrony
+       state: latest
+     become: yes
+
