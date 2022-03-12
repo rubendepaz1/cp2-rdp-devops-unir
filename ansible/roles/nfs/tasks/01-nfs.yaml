@@ -27,7 +27,7 @@
 
    - name: Abriendo puertos para el nfs 
      become: yes
-     command: firewall-cmd --permanent --add-service=nfs | 
-              firewall-cmd --permanent --add-service=rpc-bind | 
-              firewall-cmd --permanent --add-service=mountd |
+     command: firewall-cmd --permanent --add-service=nfs 
+              firewall-cmd --permanent --add-service=rpc-bind  
+              firewall-cmd --permanent --add-service=mountd 
               firewall-cmd --reload
