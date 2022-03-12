@@ -1,19 +1,24 @@
 ---
   
+   - name: Estableciendo Zona Horaria
+     timezone: 
+       name: Europe/Madrid
+    
    - name: limpiar cache dnf
      become: yes
      command: dnf clean all
 
-   - name: limpiar cache dnf
+   - name: check dnf
      become: yes
      command: dnf check
      
-   - name: limpiar cache dnf
+   - name: update dnf
      become: yes
      command: dnf update
 
    - name: Actualizamos máquinas a último nivel
      dnf:
        name: "*"
-       state: present
+       state: latest
+     become: yes
      when: ansible_os_family == "RedHat"
