@@ -26,10 +26,6 @@
    - name: check dnf
      become: yes
      command: dnf check
-     
-   - name: update dnf
-     become: yes
-     command: dnf update
 
    - name: Actualizamos máquinas a último nivel
      dnf:
