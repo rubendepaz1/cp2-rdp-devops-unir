@@ -16,7 +16,9 @@
             repo_gpgcheck=1
             gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg            
             exclude=kubelet kubeadm kubectl 
-    
+            
+   # Las siguientes tareas las meto aunque no he visto que se hable de ello ni en el foro ni en las clases, pero a mí me ha dado problema el hacer el update
+   # de las máquinas a último nivel sin meter esto previamente.
    - name: limpiar cache dnf
      become: yes
      command: dnf clean all
