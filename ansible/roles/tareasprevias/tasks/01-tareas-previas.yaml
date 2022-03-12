@@ -47,3 +47,16 @@
        state: started
        enabled: yes
 
+   - name: Activar NTP
+     become: yes
+     command: timedatectl set-ntp true
+
+   - name: Instalando paquetes necesarios
+     dnf:
+       name: "{{ item }}"
+       state: latest
+     loop:
+       - wget
+       - nfs-utils
+       - nfs4-acl-tools
+
