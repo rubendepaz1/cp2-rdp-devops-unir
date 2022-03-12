@@ -4,11 +4,18 @@
      timezone: 
        name: Europe/Madrid
        
-   - name: add the /etc/yum.repos.d/epel.repo
-     yum_repository:
-      name: epel
-      description: EPEL repo
-      baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+   - name: Agregar repositorio de kubernetes
+      blockinfile:
+      create: yes
+      path: /etc/yum.repos.d/kubernetes.repo
+      block: |
+            [kubernetes]
+            baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+            enabled=1
+            gpgcheck=1
+            repo_gpgcheck=1
+            gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg            
+            exclude=kubelet kubeadm kubectl 
     
    - name: limpiar cache dnf
      become: yes
