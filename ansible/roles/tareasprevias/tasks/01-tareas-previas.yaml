@@ -5,7 +5,7 @@
        name: Europe/Madrid
        
    - name: Agregar repositorio de kubernetes
-      blockinfile:
+     blockinfile:
       create: yes
       path: /etc/yum.repos.d/kubernetes.repo
       block: |
