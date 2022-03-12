@@ -25,18 +25,26 @@
      become: yes
      command: exportfs -s
 
-   - name: Abriendo puertos para el nfs 
-     become: yes
-     command: firewall-cmd --permanent --add-service=nfs
+# Started solo lo inicia si no está ya iniciado
+   - name: Activar Firewalld
+     service:
+       name: firewalld
+       state: started
+       enabled: yes
 
    - name: Abriendo puertos para el nfs 
-     become: yes
-     command: firewall-cmd --permanent --add-service=rpc-bind
+     firewalld: 
+       service: "{{ item }}"
+       permanent: true
+       state: enabled
+     loop:
+       - nfs
+       - rpc-bind
+       - mountd
 
-   - name: Abriendo puertos para el nfs 
-     become: yes
-     command: firewall-cmd --permanent --add-service=mountd
-
+# reloaded mejor que restarted para que recargue la configuración
    - name: Reload Firewall 
-     become: yes
-     command: firewall-cmd --reload
+     service:
+       name: firewalld
+       state: reloaded
+       enabled: yes
