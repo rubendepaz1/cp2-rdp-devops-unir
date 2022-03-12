@@ -59,6 +59,7 @@
        - wget
        - nfs-utils
        - nfs4-acl-tools
+       - net-tools
    
    - name: Desactivando Selinux
      become: yes
