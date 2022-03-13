@@ -13,16 +13,16 @@
       - 'rule family=ipv4 source address=10.0.1.10/32 accept'
       - 'rule family=ipv4 source address=10.0.1.11/32 accept'
 
-# reloaded mejor que restarted para que recargue la configuración
-   - name: Reload Firewall 
-     service:
-       name: firewalld
-       state: reloaded
-       enabled: yes
+# # reloaded mejor que restarted para que recargue la configuración
+#    - name: Reload Firewall 
+#      service:
+#        name: firewalld
+#        state: reloaded
+#        enabled: yes
 
-   - name: Restart preventivo kubelet
-     become: yes
-     command: systemctl restart kubelet
+#    - name: Restart preventivo kubelet
+#      become: yes
+#      command: systemctl restart kubelet
 
    - name: CNI y red PODs
      become: yes
