@@ -25,9 +25,9 @@
      command: kubeadm init --pod-network-cidr 192.169.0.0/16 --ignore-preflight-errors=all
      register: kubeadminit
 
-   - name: Permitiendo al ROOT usar kubectl
-     become: yes
-     command: export KUBECONFIG=/etc/kubernetes/admin.conf
+#   - name: Permitiendo al ROOT usar kubectl
+#     become: yes
+#     command: export KUBECONFIG=/etc/kubernetes/admin.conf
 
    - name: Creando dir /root/.kube
      file:
