@@ -10,3 +10,23 @@
       - 2379-2380/tcp
       - 10250-10252/tcp
       - 10255/tcp
+
+   - name: Configurando Kubeadmin
+     become: yes
+     command: kubeadm config images pull
+
+   - name: Permitiendo acceso desde el worker 
+     firewalld: 
+       rich_rule: "{{ item }}"
+       permanent: true
+       state: enabled
+     loop:
+      - 'rule family=ipv4 source address=10.0.1.10/32 accept'
+      - 'rule family=ipv4 source address=10.0.1.11/32 accept'
+
+# reloaded mejor que restarted para que recargue la configuración
+   - name: Reload Firewall 
+     service:
+       name: firewalld
+       state: reloaded
+       enabled: yes
