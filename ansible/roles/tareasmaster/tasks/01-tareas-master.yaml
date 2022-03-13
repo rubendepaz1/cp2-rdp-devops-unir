@@ -40,8 +40,8 @@
        state: directory
 
    - name: Copiando /etc/kubernetes/admin.conf a /root/.kube/config
-     become: yes
-     command: cp -i /etc/kubernetes/admin.conf /root/.kube/config
+    #  become: yes
+     command: sudo cp -i /etc/kubernetes/admin.conf /root/.kube/config
 
    - name: Dando permisos
      become: yes
