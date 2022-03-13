@@ -6,7 +6,7 @@
        state: started
        enabled: yes
 
-   - name: Creando dir 
+   - name: Creando dir /srv/nfs
      file:
        path: /srv/nfs
        state: directory
