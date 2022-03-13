@@ -1,0 +1,8 @@
+---
+
+- name: Tareas Master
+  hosts: master
+  gather_facts: true
+  become: true
+  roles:
+    - tareasmaster
