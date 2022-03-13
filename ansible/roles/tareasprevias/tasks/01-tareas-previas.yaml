@@ -18,12 +18,12 @@
   #    become: yes
   #    command: dnf update -y
 
-  #  - name: Actualizamos máquinas a último nivel
-  #    dnf:
-  #      name: "*"
-  #      state: latest
-  #    become: yes
-  #    when: ansible_os_family == "RedHat"
+   - name: Actualizamos máquinas a último nivel
+     dnf:
+       name: "*"
+       state: present
+     become: yes
+     when: ansible_os_family == "RedHat"
      
 
    - name: Instalar Chrony
