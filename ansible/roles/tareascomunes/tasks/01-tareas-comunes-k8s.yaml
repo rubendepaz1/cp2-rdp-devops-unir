@@ -58,3 +58,22 @@
      get_url: 
        url: https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:1.23:1.23.1/CentOS_8_Stream/devel:kubic:libcontainers:stable:cri-o:1.23:1.23.1.repo
        dest: /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:1.23:1.23.1.repo
+
+   - name: Configurando /etc/modules-load.d/crio.conf
+     copy:
+      src: ficheros/crio.conf
+      dest: /etc/modules-load.d/crio.conf
+      mode: u=rw,g=r,o=r
+
+   - name: Instalar CRIO
+     dnf:
+       name: cri-o
+       state: latest
+     become: yes
+     when: ansible_os_family == "RedHat"
+
+   - name: Activar CRIO
+     service:
+       name: crio
+       state: started
+       enabled: yes
