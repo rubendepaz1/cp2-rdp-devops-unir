@@ -3,7 +3,8 @@
    - name: Estableciendo Zona Horaria
      timezone: 
        name: Europe/Madrid
-       
+
+# aunque en los apuntes esto se indica que se haga más adelante, he preferido ponerlo aquí   
    - name: Kubernetes repo
      blockinfile:
       create: yes

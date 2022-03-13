@@ -65,15 +65,29 @@
       dest: /etc/modules-load.d/crio.conf
       mode: u=rw,g=r,o=r
 
-   - name: Instalar CRIO
+   - name: Instalando CRIO
      dnf:
        name: cri-o
        state: latest
      become: yes
      when: ansible_os_family == "RedHat"
 
-   - name: Activar CRIO
+   - name: Activando CRIO
      service:
        name: crio
+       state: started
+       enabled: yes
+
+   - name: Instalando K8s
+     dnf:
+       name: ['kubelet','kubeadm','kubectl']
+       state: present
+       disable_excludes: kubernetes
+     become: yes
+     when: ansible_os_family == "RedHat"
+
+   - name: Activando K8s
+     service:
+       name: kubelet
        state: started
        enabled: yes
