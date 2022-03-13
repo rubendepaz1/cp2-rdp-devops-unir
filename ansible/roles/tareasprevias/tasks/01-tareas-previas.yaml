@@ -14,9 +14,9 @@
   #    become: yes
   #    command: dnf check
 
-   - name: Actualizamos máquinas a último nivel
-     become: yes
-     command: dnf update -y
+  #  - name: Actualizamos máquinas a último nivel
+  #    become: yes
+  #    command: dnf update -y
 
   #  - name: Actualizamos máquinas a último nivel
   #    dnf:
