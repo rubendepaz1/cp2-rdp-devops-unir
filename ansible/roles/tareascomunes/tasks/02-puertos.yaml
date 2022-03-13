@@ -1,7 +1,6 @@
 ---
 
    - name: Abriendo puertos para K8s 
-     hosts: all
      firewalld: 
        port: "{{ item }}"
        permanent: true
