@@ -1,0 +1,7 @@
+---
+  
+   - name: Configurando etc/hosts
+     copy:
+      src: ficheros/hosts
+      dest: /etc/hosts
+      mode: u=rw,g=r,o=r
