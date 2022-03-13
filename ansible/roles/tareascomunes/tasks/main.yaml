@@ -1,3 +1,3 @@
 ---
 
-- include_tasks: 01-tareas-comunes.yaml
+- include_tasks: 01-tareas-comunes-K8s.yaml
