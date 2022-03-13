@@ -22,7 +22,7 @@
 
    - name: CNI y red PODs
      become: yes
-     command: kubeadm init --pod-network-cidr 192.169.0.0/16
+     command: kubeadm init --pod-network-cidr --ignore-preflight-errors 192.169.0.0/16
      register: kubeadminit
 
    - name: Permitiendo al ROOT usar kubectl
