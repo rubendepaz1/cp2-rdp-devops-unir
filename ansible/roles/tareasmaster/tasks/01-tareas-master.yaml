@@ -30,3 +30,8 @@
        name: firewalld
        state: reloaded
        enabled: yes
+
+   - name: CNI y red PODs
+     become: yes
+     command: kubeadm init --pod-network-cidr 192.169.0.0/16
+     register: kubeadminit
