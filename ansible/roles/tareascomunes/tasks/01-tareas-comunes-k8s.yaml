@@ -42,5 +42,7 @@
      command: swapoff -a
 
    - name: Eliminando Swap del fichero /etc/fstab
-     become: yes
-     command: sed -i '/swap/d' /etc/fstab
+     replace:
+      path: /etc/fstab
+      regexp: '^([^#].*?\sswap\s+sw\s+.*)$'
+      replace: '# \1'
