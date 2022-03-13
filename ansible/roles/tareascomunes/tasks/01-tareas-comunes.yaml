@@ -5,3 +5,24 @@
       src: ficheros/hosts
       dest: /etc/hosts
       mode: u=rw,g=r,o=r
+
+# Started solo lo inicia si no está ya iniciado
+   - name: Activar Firewalld
+     service:
+       name: firewalld
+       state: started
+       enabled: yes
+
+
+   - name: Activar Transparent Masquerading
+     firewalld:
+       masquerade: yes
+       state: enabled
+       permanent: yes
+
+# Started solo lo inicia si no está ya iniciado
+   - name: Activar Firewalld
+     service:
+       name: firewalld
+       state: started
+       enabled: yes
