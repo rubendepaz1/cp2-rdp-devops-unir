@@ -20,17 +20,13 @@
        state: reloaded
        enabled: yes
 
-   - name: Refresh preventivo Kubeadm
-     become: yes
-     command: kubeadm reset
-
    - name: Restart preventivo kubelet
      become: yes
      command: systemctl restart kubelet
 
    - name: CNI y red PODs
      become: yes
-     command: kubeadm init --pod-network-cidr 192.169.0.0/16
+     command: kubeadm init --pod-network-cidr 192.169.0.0/16 --ignore-preflight-errors=all
      register: kubeadminit
 
 #   - name: Permitiendo al ROOT usar kubectl
