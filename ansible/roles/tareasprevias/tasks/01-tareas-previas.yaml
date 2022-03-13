@@ -6,20 +6,24 @@
             
    # Las siguientes tareas las meto aunque no he visto que se hable de ello ni en el foro ni en las clases, pero a mí me ha dado problema el hacer el update
    # de las máquinas a último nivel sin meter esto previamente.
-  #  - name: limpiar cache dnf
-  #    become: yes
-  #    command: dnf clean all
+   - name: limpiar cache dnf
+     become: yes
+     command: dnf clean all
 
-  #  - name: check dnf
-  #    become: yes
-  #    command: dnf check
+   - name: check dnf
+     become: yes
+     command: dnf check
 
    - name: Actualizamos máquinas a último nivel
-     dnf:
-       name: "*"
-       state: latest
      become: yes
-     when: ansible_os_family == "RedHat"
+     command: dnf update -y
+
+  #  - name: Actualizamos máquinas a último nivel
+  #    dnf:
+  #      name: "*"
+  #      state: latest
+  #    become: yes
+  #    when: ansible_os_family == "RedHat"
      
 
    - name: Instalar Chrony
