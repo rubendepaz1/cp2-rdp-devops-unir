@@ -1,7 +1,7 @@
 ---
 
 - name: Instalando NFS
-  hosts: all
+  hosts: nfs
   gather_facts: true
   become: true
   roles:
