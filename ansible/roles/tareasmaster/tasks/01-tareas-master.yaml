@@ -35,3 +35,21 @@
      become: yes
      command: kubeadm init --pod-network-cidr 192.169.0.0/16
      register: kubeadminit
+
+   - name: Permitiendo al ROOT usar kubectl
+     become: yes
+     command: export KUBECONFIG=/etc/kubernetes/admin.conf
+
+   - name: Creando dir /root/.kube
+     file:
+       path: /root/.kube
+       mode: u=rw,g=r,o=r
+       state: directory
+
+   - name: Copiando /etc/kubernetes/admin.conf a /root/.kube/config
+     become: yes
+     command: cp -i /etc/kubernetes/admin.conf /root/.kube/config
+
+   - name: Dando permisos
+     become: yes
+     command: chown $(id -u):$(id -g) /root/.kube/config
