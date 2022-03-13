@@ -39,18 +39,20 @@
        mode: u=rw,g=r,o=r
        state: directory
 
+  #  - name: Copiando /etc/kubernetes/admin.conf a /root/.kube/config
+  #   #  become: yes
+  #    command: sudo cp -i /etc/kubernetes/admin.conf /root/.kube/config
+
+
+
    - name: Copiando /etc/kubernetes/admin.conf a /root/.kube/config
-    #  become: yes
-     command: sudo cp -i /etc/kubernetes/admin.conf /root/.kube/config
+     copy:
+      src: /etc/kubernetes/admin.conf
+      dest: /root/.kube/config
+      remote_src: yes
+      owner: root
+      mode: u=rw,g=r,o=r
 
    - name: Dando permisos
      become: yes
      command: chown $(id -u):$(id -g) /root/.kube/config
-
-  #  - name: Copiando /etc/kubernetes/admin.conf a /root/.kube/config
-  #    copy:
-  #     src: /etc/kubernetes/admin.conf
-  #     dest: /root/.kube/config
-  #     remote_src: yes
-  #     owner: root
-  #     mode: u=rw,g=r,o=r
