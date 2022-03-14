@@ -1,0 +1,4 @@
+---
+
+- include_tasks: 00-puertos.yaml
+- include_tasks: 01-tareas-workers.yaml
