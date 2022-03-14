@@ -1,0 +1,30 @@
+---
+  
+    - name: Creando Usuario kubeadmin
+      user:
+        name: kubeadmin
+        password: unodostrescuatro
+        home: '/home/kubeadmin'
+    
+    - name: Creacion Directorio 
+      file:
+        path: /home/kubeadmin/.kube
+        state: directory
+    
+    - name: Copiando /etc/kubernetes/admin.conf en /home/kubeadmin/.kube/config
+      copy:
+        src: /etc/kubernetes/admin.conf
+        dest: /home/kubeadmin/.kube/config
+        remote_src: yes
+    
+    - name: Dando permisos
+      shell: chown kubeadmin. /home/kubeadmin/.kube/config
+    
+    - name: Configurando en /etc/sudoers.d/kubeadmin
+      lineinfile:
+          path: /etc/sudoers.d/kubeadmin
+          line: '{{item}}'
+          state: present
+          create: yes
+      with_items:
+         - 'ALL            ALL = (ALL) NOPASSWD: ALL'
