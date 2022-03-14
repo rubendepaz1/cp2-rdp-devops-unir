@@ -1,0 +1,8 @@
+---
+
+- name: INGRESS
+  hosts: master
+  gather_facts: true
+  become: true
+  roles:
+    - ingress
