@@ -3,12 +3,12 @@
 - name: Obtenemos el join comand del nodo Master
   delegate_to: "{{ groups['master'][0] }}"
   command: kubeadm token create --print-join-command
-  register: join_command
+  register: comando-join
 
 - name: Mostramos comando
   debug:
-    msg: "{{ join_command.stdout }}"
+    msg: "{{ comando-join.stdout }}"
 
 - name: Ejecutamos comando
   become: yes
-  command: "{{ join_command.stdout }}"
+  command: "{{ comando-join.stdout }} --ignore-preflight-errors=all"
