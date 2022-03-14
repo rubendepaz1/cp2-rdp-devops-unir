@@ -13,6 +13,7 @@
 # https://github.com/jadebustos/devopslabs/blob/master/labs-k8s/00-00-instalando-kubernetes.md#desplegando-un-ingress-controller
 # ansible-playbook -i hosts -l master ingress.yaml
 # https://github.com/jadebustos/devopslabs/blob/master/labs-k8s/00-00-instalando-kubernetes.md#configurando-los-workers
+ansible-playbook -i hosts -l master join-command.yaml
 ansible-playbook -i hosts -l workers tareas-workers.yaml
 # https://github.com/jadebustos/devopslabs/blob/master/labs-k8s/00-00-instalando-kubernetes.md#creamos-un-usuario-no-administrador
 # ansible-playbook -i hosts -l master crear-usu-noadmin.yaml
