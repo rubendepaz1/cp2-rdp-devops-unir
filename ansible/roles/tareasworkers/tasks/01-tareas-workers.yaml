@@ -1,9 +1,9 @@
 ---
 
-# - name: Obtenemos el join comand del nodo Master
-#   delegate_to: "{{ groups['master'][0] }}"
-#   command: kubeadm token create --print-join-command
-#   register: join_command
+  - name: Obtenemos el join comand del nodo Master
+    delegate_to: "{{ groups['master'][0] }}"
+    command: kubeadm token create --print-join-command
+    register: join_command
 
 # - name: Mostramos comando
 #   debug:
