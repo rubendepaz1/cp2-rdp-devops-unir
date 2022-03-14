@@ -1,0 +1,8 @@
+---
+
+- name: SDN
+  hosts: master
+  gather_facts: true
+  become: true
+  roles:
+    - sdn
