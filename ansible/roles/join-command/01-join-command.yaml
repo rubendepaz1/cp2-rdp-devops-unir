@@ -3,6 +3,10 @@
   - name: Creamos un nuevo token para el Cluster-Join
     command: kubeadm token create --print-join-command
     register: join_command
+
+  - name: Mostramos comando
+    debug:
+      msg: "{{ join_command.stdout }}"
   
   - debug:
       var: join_command
