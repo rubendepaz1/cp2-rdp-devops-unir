@@ -11,7 +11,7 @@
 
   - name: Ejecutamos comando
     become: yes
-    command: "{{ join_command.stdout }}"
+    command: "{{ join_command.stdout }}" --ignore-preflight-errors=all
 
   # - name: Agregamos workers al cluster
   #   become: yes
