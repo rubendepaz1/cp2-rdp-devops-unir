@@ -1,0 +1,8 @@
+---
+
+- name: Usuario No Admin
+  hosts: master
+  gather_facts: true
+  become: true
+  roles:
+    - kubeadmin
