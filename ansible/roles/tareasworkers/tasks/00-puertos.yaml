@@ -9,8 +9,8 @@
     - 10250/tcp
     - 30000-32767/tcp
   
-- name: "Reload Firewall"
-  service: 
-    enabled: true
-    name: firewalld
-    state: reloaded
+# - name: "Reload Firewall"
+#   service: 
+#     enabled: true
+#     name: firewalld
+#     state: reloaded
