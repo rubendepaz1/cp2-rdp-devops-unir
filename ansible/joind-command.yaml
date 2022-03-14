@@ -1,0 +1,8 @@
+---
+
+- name: JOIN COMMAND
+  hosts: master
+  gather_facts: false
+  become: true
+  roles:
+    - join-command
