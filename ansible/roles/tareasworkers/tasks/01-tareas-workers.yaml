@@ -9,13 +9,13 @@
     debug:
       msg: "{{ join_command.stdout }}"
 
-# - name: Ejecutamos comando
-#   become: yes
-#   command: "{{ join_command.stdout }} --ignore-preflight-errors=all"
-
-  - name: Agregamos workers al cluster
+  - name: Ejecutamos comando
     become: yes
-    shell: "{{ hostvars['master'].join_command }} >> salida_join.txt"
-    args:
-      chdir: /home/adminUsername
-      creates: salida_join.txt
+    command: "{{ join_command.stdout }}"
+
+  # - name: Agregamos workers al cluster
+  #   become: yes
+  #   shell: "{{ hostvars['master'].join_command }} >> salida_join.txt"
+  #   args:
+  #     chdir: /home/adminUsername
+  #     creates: salida_join.txt
