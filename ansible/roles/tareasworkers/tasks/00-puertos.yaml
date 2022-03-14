@@ -1,0 +1,17 @@
+---
+
+   - name: Abriendo puertos para K8s 
+     firewalld: 
+       port: "{{ item }}"
+       permanent: true
+       state: enabled
+     loop:
+      - 10250/tcp
+      - 30000-32767/tcp
+
+# reloaded mejor que restarted para que recargue la configuración
+   - name: Reload Firewall 
+     service:
+       name: firewalld
+       state: reloaded
+       enabled: yes
