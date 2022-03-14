@@ -1,4 +1,3 @@
 ---
 
 - include_tasks: 01-tareas-comunes-k8s.yaml
-- include_tasks: 02-puertos.yaml
